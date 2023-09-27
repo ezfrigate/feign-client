@@ -2,6 +2,8 @@ package org.sb.service;
 
 import org.sb.model.BloodGroup;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

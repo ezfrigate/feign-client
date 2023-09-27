@@ -16,8 +16,6 @@ public class RandomController {
 
     @GetMapping("/hello")
     public BloodGroup bloodGroup() {
-        System.out.println("X");
-        dataAPIClient.getBloodGroup();
         return dataAPIClient.getBloodGroup();
     }
 }
