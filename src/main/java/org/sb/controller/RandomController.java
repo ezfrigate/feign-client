@@ -1,5 +1,6 @@
 package org.sb.controller;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.sb.model.BloodGroup;
 import org.sb.service.DataAPIClient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ public class RandomController {
     @Autowired
     private DataAPIClient dataAPIClient;
 
-    @GetMapping("/hello")
+    @GetMapping("/bg")
     public BloodGroup bloodGroup() {
         return dataAPIClient.getBloodGroup();
     }

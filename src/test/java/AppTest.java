@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 @ExtendWith(SpringExtension.class) // Use SpringExt
 @SpringBootTest(classes = FeignApp.class)
@@ -24,6 +26,8 @@ class AppTest {
     void test(){
         Assertions.assertNotNull(dataAPIClient.getBloodGroup());
         //If API gives B then test will run
-        Assertions.assertEquals("B", dataAPIClient.getBloodGroup().getType());
+        assertEquals("B", dataAPIClient.getBloodGroup().getType());
     }
+
+
 }

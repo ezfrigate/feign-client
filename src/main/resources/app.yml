@@ -1,7 +1,36 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info, health, metrics, circuitbreakers
+    health:
+      show-details: always
+  health:
+    circuitbreakers:
+      enabled: true
+
 feign:
   client:
     config:
+      httpBinClient:
+        read-timeout: 2000
+        connect-timeout: 1000
+  circuitbreaker:
+    enabled: true
+
+resilience4j:
+  circuitbreaker:
+    configs:
       default:
-        connectTimeout: 5000
-        readTimeout: 5000
-        loggerLevel: basic
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        permittedNumberOfCallsInHalfOpenState: 3
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 5s
+        failureRateThreshold: 50
+        eventConsumerBufferSize: 10
+      instances:
+        HttpBinClient_getBinWithDelayInSeconds_int:
+          minimumNumberOfCalls: 10
+          failureRateThreshold: 50
